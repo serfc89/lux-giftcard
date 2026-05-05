@@ -1,0 +1,261 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .card-wrap {
+    font-family: 'Comic Neue', cursive;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 24px 16px 32px;
+  }
+
+  .card {
+    background: #1a0000;
+    border-radius: 20px;
+    border: 3px solid #cc0000;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .halftone-bg {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, #cc0000 1.5px, transparent 1.5px);
+    background-size: 18px 18px;
+    opacity: 0.07; pointer-events: none;
+  }
+
+  .slash-lines {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(204,0,0,0.04) 12px, rgba(204,0,0,0.04) 13px);
+    pointer-events: none;
+  }
+
+  .header {
+    background: #cc0000;
+    padding: 14px 24px 12px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: relative; overflow: hidden;
+  }
+
+  .header::before {
+    content: ''; position: absolute; top: -10px; right: -10px;
+    width: 80px; height: 80px; background: #ff3333; border-radius: 50%; opacity: 0.3;
+  }
+
+  .header-title {
+    font-family: 'Bangers', cursive; font-size: 32px; letter-spacing: 3px;
+    color: #fff; text-shadow: 3px 3px 0 #000; line-height: 1;
+  }
+
+  .header-sub {
+    font-size: 11px; color: rgba(255,255,255,0.85); font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; margin-top: 2px;
+  }
+
+  .deadpool-circle {
+    width: 70px; height: 70px; border-radius: 50%;
+    background: #111; border: 3px solid #000;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; flex-shrink: 0;
+  }
+
+  .dp-face { width: 62px; height: 62px; }
+
+  .body { padding: 24px 28px 20px; position: relative; }
+
+  .speech-bubble {
+    background: #fff; border: 2.5px solid #000; border-radius: 14px;
+    padding: 14px 18px; position: relative; margin-bottom: 22px;
+  }
+
+  .speech-bubble::before {
+    content: ''; position: absolute; top: -14px; left: 28px;
+    border: 7px solid transparent; border-bottom-color: #000;
+  }
+
+  .speech-bubble::after {
+    content: ''; position: absolute; top: -9px; left: 30px;
+    border: 5px solid transparent; border-bottom-color: #fff;
+  }
+
+  .bubble-text { font-size: 14.5px; font-weight: 700; color: #111; line-height: 1.6; }
+  .bubble-text .nick { color: #cc0000; font-size: 17px; }
+  .bubble-text .muted { color: #888; font-size: 12.5px; font-style: italic; font-weight: 400; }
+
+  .gifts-title {
+    font-family: 'Bangers', cursive; font-size: 20px; letter-spacing: 2px;
+    color: #ff4444; margin-bottom: 14px; text-shadow: 2px 2px 0 #000;
+  }
+
+  .gifts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 22px; }
+
+  .gift-card {
+    background: #0f0000; border: 2px solid #cc0000; border-radius: 12px;
+    padding: 16px 14px; position: relative; overflow: hidden;
+  }
+
+  .gift-card::before {
+    content: ''; position: absolute; top: -20px; right: -20px;
+    width: 60px; height: 60px; background: #cc0000; border-radius: 50%; opacity: 0.12;
+  }
+
+  .gift-icon { font-size: 28px; margin-bottom: 8px; display: block; }
+
+  .gift-label {
+    font-family: 'Bangers', cursive; font-size: 16px; letter-spacing: 1.5px;
+    color: #ff6666; margin-bottom: 5px; text-shadow: 1px 1px 0 #000;
+  }
+
+  .gift-desc { font-size: 12.5px; color: rgba(255,255,255,0.75); line-height: 1.5; }
+
+  .gift-link {
+    display: inline-block; margin-top: 8px; background: #cc0000; color: #fff;
+    font-weight: 700; font-size: 11.5px; padding: 5px 12px; border-radius: 20px;
+    text-decoration: none; letter-spacing: 0.5px; border: 1.5px solid #ff4444;
+    transition: background 0.15s;
+  }
+  .gift-link:hover { background: #ff2222; }
+
+  .divider {
+    height: 2px;
+    background: repeating-linear-gradient(90deg, #cc0000 0 12px, transparent 12px 18px);
+    margin: 0 0 20px; border-radius: 2px;
+  }
+
+  .bottom-row {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 10px;
+  }
+
+  .from-box { font-size: 13px; color: rgba(255,255,255,0.55); font-style: italic; line-height: 1.6; }
+  .from-box span { color: #ff6666; font-weight: 700; font-style: normal; }
+
+  .redeem-btn {
+    background: #cc0000; color: #fff; font-family: 'Bangers', cursive;
+    font-size: 16px; letter-spacing: 2px; border: 2px solid #ff4444;
+    border-radius: 8px; padding: 10px 22px; cursor: pointer;
+    transition: background 0.15s, transform 0.1s; text-shadow: 1px 1px 0 #000;
+  }
+  .redeem-btn:hover { background: #ff2222; transform: scale(1.03); }
+  .redeem-btn:active { transform: scale(0.97); }
+
+  .xp-bar {
+    margin: 0 0 6px; background: #0f0000; border: 1.5px solid #cc0000;
+    border-radius: 6px; height: 12px; overflow: hidden;
+  }
+
+  .xp-fill {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, #cc0000, #ff6600);
+    border-radius: 4px; transition: width 1.8s ease;
+  }
+
+  .xp-label {
+    font-size: 11px; color: rgba(255,255,255,0.45); text-align: right;
+    margin-top: 3px; margin-bottom: 20px; letter-spacing: 0.5px;
+  }
+</style>
+
+<div class="card-wrap">
+  <div class="card">
+    <div class="halftone-bg"></div>
+    <div class="slash-lines"></div>
+
+    <div class="header">
+      <div>
+        <div class="header-title">GIFT CARD</div>
+        <div class="header-sub">Edición Merc con Boca &nbsp;·&nbsp; Para: Lux</div>
+      </div>
+      <div class="deadpool-circle">
+        <svg class="dp-face" viewBox="0 0 62 62" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="31" cy="31" r="31" fill="#cc0000"/>
+          <ellipse cx="19" cy="26" rx="10" ry="12" fill="#1a0000" stroke="#000" stroke-width="1.5"/>
+          <ellipse cx="43" cy="26" rx="10" ry="12" fill="#1a0000" stroke="#000" stroke-width="1.5"/>
+          <ellipse cx="19" cy="26" rx="6" ry="7.5" fill="#fff"/>
+          <ellipse cx="43" cy="26" rx="6" ry="7.5" fill="#fff"/>
+          <line x1="1" y1="20" x2="62" y2="20" stroke="#1a0000" stroke-width="1.5"/>
+          <path d="M22 40 Q31 46 40 40" stroke="#1a0000" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <line x1="5" y1="32" x2="57" y2="32" stroke="#1a0000" stroke-width="1.5"/>
+          <circle cx="19" cy="26" r="4" fill="#1a0000"/>
+          <circle cx="43" cy="26" r="4" fill="#1a0000"/>
+          <circle cx="20" cy="25" r="1.2" fill="#fff"/>
+          <circle cx="44" cy="25" r="1.2" fill="#fff"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="body">
+
+      <div class="speech-bubble">
+        <div class="bubble-text">
+          Oye, <span class="nick">Lux</span> — Deadpool aquí. 🎭<br>
+          Sí, rompí la cuarta pared <em>de nuevo</em>.<br>
+          Alguien a quien impactaste su vida de forma especial<br>
+          piensa seriamente que mereces cosas épicas.<br>
+          <span class="muted">(y tienen muy buen gusto, admitámoslo)</span>
+        </div>
+      </div>
+
+      <div class="gifts-title">⚔ Tus Regalos, Mercenaria</div>
+
+      <div class="gifts-grid">
+        <div class="gift-card">
+          <span class="gift-icon">🤖</span>
+          <div class="gift-label">Claude Code Pro</div>
+          <div class="gift-desc">
+            3 meses completos. Acceso a la IA más poderosa para crear, automatizar y conquistar el mundo (o al menos tus proyectos).
+          </div>
+          <a class="gift-link" href="https://claude.ai/gift/redeem?code=d355194a-e2a2-4164-a29b-3c50e7aab8c9" target="_blank">↗ Canjear ahora</a>
+        </div>
+
+        <div class="gift-card">
+          <span class="gift-icon">🎓</span>
+          <div class="gift-label">Curso Udemy</div>
+          <div class="gift-desc">
+            Claude Code & Cowork — aprende a crear proyectos reales con IA desde cero, a tu ritmo y en español.
+          </div>
+          <a class="gift-link" href="https://www.udemy.com/course/claude-code-cowork-course/" target="_blank">↗ Ver curso</a>
+        </div>
+      </div>
+
+      <div class="xp-bar">
+        <div class="xp-fill" id="xpFill"></div>
+      </div>
+      <div class="xp-label">Nivel de poder: cargando... ████████░░ 80%</div>
+
+      <div class="divider"></div>
+
+      <div class="bottom-row">
+        <div class="from-box">
+          Con amor y caos controlado 💥<br>
+          — De alguien que sabe que eres <span>imparable</span>
+        </div>
+        <button class="redeem-btn" onclick="boom()">¡ABRIR REGALO!</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  setTimeout(() => {
+    const fill = document.getElementById('xpFill');
+    if (fill) fill.style.width = '80%';
+  }, 400);
+
+  function boom() {
+    const card = document.querySelector('.card');
+    card.style.transform = 'scale(1.02)';
+    card.style.transition = 'transform 0.1s';
+    setTimeout(() => { card.style.transform = 'scale(1)'; }, 120);
+    const btn = document.querySelector('.redeem-btn');
+    btn.textContent = '¡BOOM! 💥';
+    btn.style.background = '#ff6600';
+    setTimeout(() => {
+      btn.textContent = '¡ABRIR REGALO!';
+      btn.style.background = '#cc0000';
+    }, 1500);
+  }
+</script>
