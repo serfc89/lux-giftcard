@@ -141,6 +141,24 @@
   .redeem-btn:hover { background: #ff2222; transform: scale(1.03); }
   .redeem-btn:active { transform: scale(0.97); }
 
+  .video-section { margin-bottom: 22px; }
+
+  .video-hint {
+    font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 10px;
+    background: rgba(204,0,0,0.15); border-left: 3px solid #cc0000;
+    padding: 8px 12px; border-radius: 0 8px 8px 0;
+  }
+
+  .video-wrap {
+    position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+    border-radius: 10px; border: 2px solid #cc0000;
+  }
+
+  .video-wrap iframe {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    border-radius: 8px;
+  }
+
   .xp-bar {
     margin: 0 0 6px; background: #0f0000; border: 1.5px solid #cc0000;
     border-radius: 6px; height: 12px; overflow: hidden;
@@ -199,6 +217,13 @@
       </div>
 
       <div class="gifts-title">⚔ Tus Regalos, Mercenaria</div>
+
+      <div class="video-section">
+        <div class="video-hint">🎬 <strong>Antes de hacer clic en tus regalos</strong> — mira este video primero:</div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/0Ms1phL58yA" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
 
       <div class="gifts-grid">
         <div class="gift-card">
